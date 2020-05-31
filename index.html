@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<body style="text-align: center;">
+    <h2>
+        距离<b style="font-size:xx-large;color: cadetblue;">公司财务</b>考试还有 
+    </h2>
+    <h1 id="DDL"></h1>
+    <script>
+        const ddl = new Date("2020/6/3/14:00:00");
+        const elem = document.getElementById("DDL");
+        let day,hour,min,sec;
+        let now;
+        function update(){
+            now = new Date();
+            sec = (ddl.getDay() - now.getDay() )* 24;
+            sec += ddl.getHours() - now.getHours();
+            sec *= 60;
+            sec += ddl.getMinutes() - now.getMinutes();
+            sec *= 60;
+            sec += ddl.getSeconds() - now.getSeconds();
+            day = Math.floor(sec / 24 / 60 / 60 );
+            sec -= day * 24 * 60 * 60;
+            hour = Math.floor( sec / 60 / 60 );
+            sec -= hour * 60 * 60;
+            min = Math.floor( sec / 60);
+            sec -= min * 60;
+            elem.innerText = day + "  天  " + hour + "  小时  " + min + "  分  " + sec + "  秒";
+        }
+        setInterval(update,1000);
+    </script>
+</body>
